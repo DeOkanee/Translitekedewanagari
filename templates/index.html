@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transliterasi ITRANS ke Dewanagari</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Transliterasi ITRANS ke Dewanagari</h1>
+        <form id="transliterationForm">
+            <label for="teks_input">Diingat gunakan hurup kecil semua agar proses translitasinya lancar <br><hr>Masukkan teks yang ingin diubah menjadi bahasa Sanskrit (transliterasi ITRANS):</label>
+            <input type="text" id="teks_input" name="teks_input" required>
+            <button type="button" onclick="ubahTeks()">Ubah</button>
+        </form>
+        <p><b>Hasil:</b></p>
+        <p class="result" id="result"></p>
+        <button onclick="copyToClipboard()">Copy</button>
+    </div>
+    <div>
+        <p class="textoka">by &nbsp;<a href="#">DeOka</a></p>
+    </div>
+    <script>
+        function ubahTeks() {
+            var teks_input = $("#teks_input").val();
+
+            $.ajax({
+                url: "/ubah_ke_dewanagari",
+                type: "POST",
+                data: { teks_input: teks_input },
+                success: function(response) {
+                    $("#result").text("Teks dalam bahasa Sanskrit (Dewanagari): " + response);
+                    $("#result").text(response);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        function copyToClipboard() {
+            var resultElement = document.getElementById("result");
+            var textToCopy = resultElement.textContent || resultElement.innerText;
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(textToCopy).then(function() {
+                    alert('Teks berhasil disalin ke clipboard!');
+                }).catch(function(err) {
+                    console.error('Gagal menyalin teks: ', err);
+                });
+            } else {
+                var textarea = document.createElement('textarea');
+                textarea.value = textToCopy;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('Teks berhasil disalin ke clipboard!');
+            }
+        }
+    </script>
+</body>
+</html>

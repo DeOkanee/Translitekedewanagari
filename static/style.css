@@ -1,0 +1,82 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(86, 207, 228);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 40px 40px 40px;
+    margin-top: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgb(185, 185, 185);
+    border-radius: 10px;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+
+
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    color: #111111;
+}
+
+input {
+    border-radius: 5px;
+    max-width: 95%; /* Ganti nilai sesuai kebutuhan */
+    width: 100%;
+     min-height: 30px; /* Ganti nilai sesuai kebutuhan */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    border-radius: 5px;
+    background-color: #104e13;
+   
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #7a7979;
+    color: rgb(255, 255, 255);
+}
+
+.result {
+    margin-top: 20px;
+    color: #1b1b1b;
+    background-color: #a2eea6;
+    padding: 30px;
+    border-radius: 10px;
+}
+.textoka{
+    text-align: center;
+    margin-top: 10%;
+    color: rgb(36, 36, 36);
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.textoka a{
+    color: green;
+    text-decoration: none;
+}
+@media screen and (max-width:567px){ 
+    .textoka{
+        margin-top: 40%;
+    }
+}
